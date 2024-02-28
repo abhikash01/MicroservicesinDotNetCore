@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Ordering.Application.Contracts.Persistence;
 using Ordering.Domain.Common;
-using Ordering.Infrastructure.Persistance;
+using Ordering.Infrastructure.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,7 +69,7 @@ namespace Ordering.Infrastructure.Repositories
 			return entity;
 		}
 
-		public virtual async Task UpdateAsync(T entity)
+		public async Task UpdateAsync(T entity)
 		{
 			_dbContext.Entry(entity).State = EntityState.Modified;
 			await _dbContext.SaveChangesAsync();

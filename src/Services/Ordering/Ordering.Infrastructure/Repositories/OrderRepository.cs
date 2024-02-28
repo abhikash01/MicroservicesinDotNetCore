@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Ordering.Application.Contracts.Persistence;
 using Ordering.Domain.Entities;
-using Ordering.Infrastructure.Persistance;
+using Ordering.Infrastructure.Persistence;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +18,10 @@ namespace Ordering.Infrastructure.Repositories
 
 		public async Task<IEnumerable<Order>> GetOrdersByUserName(string userName)
 		{
-			 var orderList = await _dbContext.Orders.Where(x=> x.UserName == userName).ToListAsync();
-			 return orderList;
+			var orderList = await _dbContext.Orders
+									.Where(o => o.UserName == userName)
+									.ToListAsync();
+			return orderList;
 		}
 	}
 }
